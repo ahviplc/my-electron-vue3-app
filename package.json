@@ -1,7 +1,9 @@
 {
   "name": "my-electron-vue3-app",
+  "author": "LC",
   "version": "0.1.0",
   "private": true,
+  "description": "a demo of the electron-vue3 by LC.",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
