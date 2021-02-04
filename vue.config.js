@@ -63,6 +63,35 @@ module.exports = {
         }
     },
     devServer: {
-        port: 6886
+        port: 6886, // 项目启动端口
+        // 配置proxy 解决跨域问题 跨源资源共享 (CORS)
+        proxy: {
+            '/one.json': {
+                // 请求的目标服务器地址
+                target: 'https://v2.jinrishici.com',
+                // 设置允许跨域
+                changeOrigin: true,
+                // 重写路径
+                pathRewrite: {
+                    '^/one.json': '/one.json'
+                },
+                headers: {
+                    referer: ''
+                }
+            },
+            '/getAPoem': {
+                // 请求的目标服务器地址
+                target: 'https://v2.jinrishici.com',
+                // 设置允许跨域
+                changeOrigin: true,
+                // 重写路径
+                pathRewrite: {
+                    '^/getAPoem': '/one.json'
+                },
+                headers: {
+                    referer: ''
+                }
+            }
+        }
     }
 }

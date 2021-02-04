@@ -87,6 +87,29 @@ createApp(App).use(router).mount('#app')
 
 ```
 
+# 添加axios
+```markdown
+> npm install axios -s
+
+Vue3全局使用axios_Adoro的博客-CSDN博客
+https://blog.csdn.net/Adoro/article/details/113250379
+```
+
+## 添加axios之后 配置main.js
+```javascript
+import App from './App.vue'
+import router from './router'
+
+import axios from 'axios'
+
+// 定义app
+const app = createApp(App)
+// 绑定全局属性
+app.config.globalProperties.$axios = axios
+// 使用路由
+app.use(router).mount('#app')
+```
+
 # run it.
 > 很多命令npm run * 具体请看package.json的"scripts".
 ## Project setup
