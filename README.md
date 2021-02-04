@@ -22,7 +22,7 @@
 
 # 添加路由
 ```markdown
-> npm install vue-router@4
+> npm install vue-router@4 -s
 
 vuejs/vue-router-next: The Vue 3 official router
 https://github.com/vuejs/vue-router-next
@@ -33,11 +33,16 @@ https://next.router.vuejs.org/
 ## router/index.js
 ```javascript
 import {createRouter, createWebHashHistory} from 'vue-router'
-import Home from '../App'
+import Home from '../components/Home'
 import Poem from "../components/poem/poem"
 import About from "../components/About"
 
+// mode:"history"
+// const routerHistory = createWebHistory()
+
+// mode:"hash模式"
 const routerHistory = createWebHashHistory()
+
 const routes = [
     {
         path: '/',
@@ -51,15 +56,34 @@ const routes = [
     },
     {
         path: '/poem',
-        name: 'poem-page',
+        name: 'poem',
         component: Poem
     }
 ]
 
 export default createRouter({
-    history: routerHistory, //===>mode:"history"
+    history: routerHistory,
     routes
 })
+
+```
+
+## 挂载路由
+
+```javascript
+import {createApp} from 'vue'
+import App from './App.vue'
+import router from './router'
+
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
+或者写成
+import {createApp} from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App).use(router).mount('#app')
 
 ```
 
