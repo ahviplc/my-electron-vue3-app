@@ -53,7 +53,7 @@
                 // eslint-disable-next-line camelcase
                 // let jinrishici_url = '/one.json'
                 // ☆备注:在【src/background.js:23】配置好 webSecurity: false 之后,无论是开发还是生产环境,直接使用full_jinrishici_url也都是可以的了,无跨域问题了 已经实践证明 当然这个只是electron 不是web web是其他解决途径
-                // 要是web的话 还是 放开 line60 的注释 使用这个 配合 vue.config.js:68 起作用. 现在根据判断是开发环境还是生产环境 使用对应url了 在line63-line71
+                // 要是web的话 还是 放开 line60 的注释 使用这个 配合 vue.config.js:68 起作用. 现在根据判断是开发环境还是生产环境的结果 使用对应url了 在line63-line71
                 // eslint-disable-next-line camelcase
                 // let full_jinrishici_url = 'https://v2.jinrishici.com/one.json'
                 // eslint-disable-next-line camelcase
@@ -64,9 +64,9 @@
                 let full_jinrishici_url = ''
                 // 判断是否是开发环境 是开发环境的话 为true
                 const isDevelopment = process.env.NODE_ENV !== 'production'
-                if (isDevelopment) {
+                if (isDevelopment) { // 是开发环境 使用自己跨域处理的接口链接
                     full_jinrishici_url = 'http://localhost:6886/getAPoem'
-                } else {
+                } else { // 是生产环境 使用今日诗词官方的接口链接
                     full_jinrishici_url = 'https://v2.jinrishici.com/one.json'
                 }
 

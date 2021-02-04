@@ -115,6 +115,20 @@ app.use(router).mount('#app')
 具体看 vue.config.js 中 line 68的具体proxy配置.
 ```
 
+## 判断是开发环境还是生产环境
+```javascript
+// 根据判断是开发环境还是生产环境的结果 使用对应url了
+// 定义全局url
+let full_jinrishici_url = ''
+// 判断是否是开发环境 是开发环境的话 为true
+const isDevelopment = process.env.NODE_ENV !== 'production'
+if (isDevelopment) { // 是开发环境 使用自己跨域处理的接口链接
+    full_jinrishici_url = 'http://localhost:6886/getAPoem'
+} else { // 是生产环境 使用今日诗词官方的接口链接
+    full_jinrishici_url = 'https://v2.jinrishici.com/one.json'
+}
+```
+
 # run it.
 > 很多命令npm run * 具体请看package.json的"scripts".
 ## Project setup
