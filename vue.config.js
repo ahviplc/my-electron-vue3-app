@@ -53,7 +53,7 @@ module.exports = {
                     ]
                 },
                 "mac": {
-                    "icon": "public/icons/icon.ico"
+                    "icon": "public/icons/icon.icns"
                 },
                 "linux": {
                     "icon": "public/icons"
