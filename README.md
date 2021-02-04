@@ -20,6 +20,49 @@
 
 ```
 
+# 添加路由
+```markdown
+> npm install vue-router@4
+
+vuejs/vue-router-next: The Vue 3 official router
+https://github.com/vuejs/vue-router-next
+
+Home | Vue Router
+https://next.router.vuejs.org/
+```
+## router/index.js
+```javascript
+import {createRouter, createWebHashHistory} from 'vue-router'
+import Home from '../App'
+import Poem from "../components/poem/poem"
+import About from "../components/About"
+
+const routerHistory = createWebHashHistory()
+const routes = [
+    {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
+    },
+    {
+        path: '/poem',
+        name: 'poem-page',
+        component: Poem
+    }
+]
+
+export default createRouter({
+    history: routerHistory, //===>mode:"history"
+    routes
+})
+
+```
+
 # run it.
 > 很多命令npm run * 具体请看package.json的"scripts".
 ## Project setup
