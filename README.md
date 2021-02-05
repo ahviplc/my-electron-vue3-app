@@ -138,7 +138,7 @@ app.use(router).mount('#app')
 
 # 跨域问题
 ```markdown
-具体看 vue.config.js 中 line 68的具体proxy配置.
+具体看 vue.config.js 中 line 69的具体proxy配置.
 ```
 
 ## 判断是开发环境还是生产环境
