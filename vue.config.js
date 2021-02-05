@@ -2,6 +2,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
     pluginOptions: {
         electronBuilder: {
+            nodeIntegration:true, // 控制是否集成node,要从渲染过程中访问Node.js API,您需要设置 nodeIntegration 选项为 true
             builderOptions: {
                 'appId': 'com.lc',
                 'productName': 'my-electron-vue3-app', // 项目名，也是生成的安装文件名，即my-electron-vue3-app.exe

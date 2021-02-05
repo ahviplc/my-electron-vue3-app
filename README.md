@@ -9,6 +9,11 @@
 > electron-vue 安装环境、构建+打包（mac和windows）这一篇就够了_阿毛sky的博客-CSDN博客
   https://blog.csdn.net/qq_32244819/article/details/110820687
 
+> 就是这个让我豁然开朗,配置了vue.config.js-【nodeIntegration:true】,也有快速打包应用说明
+
+> 使用vue-cli-plugin-electron-builder创建electron-vue项目 - 我的程序笔记
+  https://huayig.cn/index.php/archives/90/
+
 # 技术栈
 ```markdown
 此my-electron-vue-app 使用技术栈以及其版本 比较新的版本 也就是按照上面教程初始化项目所用的版本
@@ -18,11 +23,27 @@
 
 > Node:12.18.3
 
+> 下面的说明都只是工作在 electron:serve | electron:build 下
+// Only works in electron serve/build
+// Will not work in renderer process unless you enable nodeIntegration
+// Expects package.json to be placed in public folder => 【path.join(path.resolve('.'), 'package.json')】这是拿到项目的绝对路径 + 'package.json'的路径
+
+> 工作在 serve | build 下 都会是下面的处理 因为web只是运行在浏览器环境 无法访问Node.js API
+> vue.config.js:5 此行设置为 nodeIntegration:false 或者无此行,删除此行
 > ☆ 此项目不可以直接在vue组件页面,使用node进行后端操作,因为这就只是在浏览器环境中.
 > src/components/poem/poem.vue:39
 > console.log('...poem.vue node os..arch() -> ', require('os').arch(), '...poem.vue node os..platform() -> ', require('os').platform()) 
 > // ...poem.vue node os..arch() ->  javascript ...poem.vue node os..platform() ->  browser
 
+> 如果开启 让 vue.config.js:5 此行设置为 nodeIntegration:true
+> ☆ 此项目可直接在vue组件页面,使用node进行后端操作,因为这node开发环境可以有效启用.
+> src/components/poem/poem.vue:39
+> console.log('...poem.vue node os..arch() -> ', require('os').arch(), '...poem.vue node os..platform() -> ', require('os').platform()) 
+> // ...poem.vue node os..arch() ->  x64 ...poem.vue node os..platform() ->  win32
+
+> 划重点:
+> nodeIntegration:true, // 控制是否集成node,要从渲染过程中(渲染进程)访问Node.js API,您需要设置 nodeIntegration 选项为 true
+> 目前此项目开启，其 Electron 在主进程和渲染进程中都暴露了对 Node.js API 及其模块的完全访问权限.
 ```
 
 # 添加路由
@@ -177,6 +198,13 @@ npm run electron:serve
 
 ### Compiles the electron and minifies for production
 ```
+# 快速打包 配置说明
+项目根目录创建 .npmrc 文件
+填入如下内容，并保存，这一步是为了加快打包速度：
+ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
+ELECTRON_BUILDER_BINARIES_MIRROR=http://npm.taobao.org/mirrors/electron-builder-binaries/
+
+# 执行输入如下指令即可打包
 npm run electron:build
 
 # 打包electron
@@ -207,6 +235,24 @@ win32 -> vue.config.js:36
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 官方项目地址和开发文档Docs
+```markdown
+nklayman/vue-cli-plugin-electron-builder: Easily Build Your Vue.js App For Desktop With Electron
+https://github.com/nklayman/vue-cli-plugin-electron-builder
+
+Vue CLI Plugin Electron Builder
+https://nklayman.github.io/vue-cli-plugin-electron-builder/
+
+Quick Start | Vue CLI Plugin Electron Builder
+https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/
+
+Security | Vue CLI Plugin Electron Builder
+https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration
+
+Guide | Vue CLI Plugin Electron Builder
+https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/guide.html#handling-static-assets
+```
 
 # About me
 
