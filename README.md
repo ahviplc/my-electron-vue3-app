@@ -18,6 +18,11 @@
 
 > Node:12.18.3
 
+> ☆ 此项目不可以直接在vue组件页面,使用node进行后端操作,因为这就只是在浏览器环境中.
+> src/components/poem/poem.vue:39
+> console.log('...poem.vue node os..arch() -> ', require('os').arch(), '...poem.vue node os..platform() -> ', require('os').platform()) 
+> // ...poem.vue node os..arch() ->  javascript ...poem.vue node os..platform() ->  browser
+
 ```
 
 # 添加路由
