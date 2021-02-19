@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
-      <router-link to="/poem">Poem</router-link>
+      <router-link to="/poem">Poem</router-link>|
+      <router-link to="/vue3BaiDuCalendar">vue3-baidu-calendar</router-link>
     </div>
     <router-view/>
   </div>

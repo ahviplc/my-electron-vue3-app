@@ -136,6 +136,64 @@ app.config.globalProperties.$axios = axios
 app.use(router).mount('#app')
 ```
 
+# 添加第三方组件
+## vue-baidu-calendar
+```markdown
+qiuquanwu/vue-baidu-calendar: 基于vue3实现的仿百度日历组件  
+> https://github.com/qiuquanwu/vue-baidu-calendar
+```
+安装使用步骤  
+1. 安装
+> npm install vue-baidu-calendar --save
+
+2. 使用
+```javascript
+import { createApp } from 'vue'
+import App from './App.vue'
+import BaiduCalendar from "vue-baidu-calendar"
+const app=createApp(App)
+app.use(BaiduCalendar)
+app.mount('#app')
+```
+
+3. 页面组件中引用
+```vue
+<template>
+    <!-- 要给外层div指定合适的宽度 -->
+    <div style="width:600px;margin-top:20px;margin-left:99px">
+        <baidu-calendar @change="change" :date="date" :range="range"/>
+    </div>
+</template>
+
+<script>
+    import {ref} from "vue";
+    export default {
+        /* 使用vue3的composition API */
+        setup() {
+            //date改变触发事件
+            const change = (obj) => {
+                console.log('百度日历组件 对象 obj -> ', obj)
+            }
+            // const date = ref("2021-1-27") //设置日期，若不设置，则默认为今天
+            const date = ref("") //设置日期，若不设置，则默认为今天
+            const range = [1900, 2088] //设置年份范围 默认[2010,2030]
+            return {
+                change,
+                date,
+                range
+            }
+        }
+    }
+</script>
+
+<style></style>
+```
+
+## 其他三方组件
+```markdown
+待续...
+```
+
 # 跨域问题
 ```markdown
 具体看 vue.config.js 中 line 69的具体proxy配置.

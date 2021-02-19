@@ -9,5 +9,11 @@ import axios from 'axios'
 const app = createApp(App)
 // 绑定全局属性
 app.config.globalProperties.$axios = axios
-// 使用路由
+
+// 导入vue-baidu-calendar并使用
+import BaiduCalendar from "vue-baidu-calendar"
+
+app.use(BaiduCalendar)
+
+// 使用路由router
 app.use(router).mount('#app')

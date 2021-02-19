@@ -24,6 +24,11 @@ const routes = [
         path: '/poem',
         name: 'poem',
         component: Poem
+    },
+    {
+        path: '/vue3BaiDuCalendar',
+        name: 'vue3BaiDuCalendar',
+        component: () => import('../components/calendar/calendar')
     }
 ]
 
