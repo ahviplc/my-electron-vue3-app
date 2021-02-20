@@ -6,10 +6,17 @@
         <div v-if="isTrue" class="about">
             {{say}}~{{name}}
         </div>
+        <!--引入自己diy的组件 在需要的地方 按照如下形式 引入即可-->
+        <div>
+            <diyComponent></diyComponent>
+        </div>
     </div>
 </template>
 
 <script>
+    // 导入Message使用 ElMessage 从element-plus中
+    import {ElMessage} from 'element-plus'
+    // =============================================
     console.log('...env begin...')
     // isInBrowser为true就是浏览器环境中
     console.log('...亲,你目前在如下环境 os.platform() -> ', require('os').platform())
@@ -56,17 +63,25 @@
                 // packageObj.author ->  LC packageObj.version ->  0.1.0
                 alert('...读取成功... Data -> ' + 'packageObj.author -> ' + packageObj.author + 'packageObj.version -> ' + packageObj.version)
             },
-            changeIsTrue(){
+            changeIsTrue() {
                 this.isTrue = !this.isTrue;
+                // ElMessage提示
+                // ElMessage(this.say + '!~' + this.name)
+                // 可关闭写法
+                ElMessage({
+                    showClose: true,
+                    message: this.say + '!~' + this.name,
+                    duration: 1500
+                });
             }
         }
     }
 </script>
 
 <style scoped>
-   .about{
-       margin-top: 30px;
-       margin-left: 10px;
-       color: #42b983;
-   }
+    .about {
+        margin-top: 30px;
+        margin-left: 10px;
+        color: #42b983;
+    }
 </style>
