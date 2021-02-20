@@ -25,6 +25,7 @@
     console.log('...isInNodeIntegration...为true就是在electron环境中... -> ', !isInBrowser)
     // const isInNodeIntegration = require('os').platform() === 'win32' // 此行废弃 因为在 mac中就不是这个值了 还是判断 isInBrowser 最好,取反就是 isInNodeIntegration
     console.log('...env end...')
+    // =============================================
     export default {
         name: "About",
         data() {
@@ -55,13 +56,27 @@
                 const path = require('path')
                 // console.log('...About.vue node os..arch() -> ', require('os').arch(), '...About.vue node os..platform() -> ', require('os').platform())
                 const fileLocation = path.join(path.resolve('.'), 'package.json')
-                const fileContents = fs.readFileSync(fileLocation, 'utf8')
-                // console.log(fileContents)
-                const packageObj = JSON.parse(fileContents)
-                // console.log(packageObj)
-                console.log('packageObj.author -> ', packageObj.author, 'packageObj.version -> ', packageObj.version)
-                // packageObj.author ->  LC packageObj.version ->  0.1.0
-                alert('...读取成功... Data -> ' + 'packageObj.author -> ' + packageObj.author + 'packageObj.version -> ' + packageObj.version)
+                console.log('...About.vue...fileLocation -> ', fileLocation);
+                try {
+                    const fileContents = fs.readFileSync(fileLocation, 'utf8')
+                    // console.log(fileContents)
+                    const packageObj = JSON.parse(fileContents)
+                    // console.log(packageObj)
+                    console.log('packageObj.author -> ', packageObj.author, 'packageObj.version -> ', packageObj.version)
+                    // packageObj.author ->  LC packageObj.version ->  0.1.0
+                    // alert('...读取成功... Data -> ' + 'packageObj.author -> ' + packageObj.author + 'packageObj.version -> ' + packageObj.version)
+                    ElMessage('...读取成功... Data -> ' + 'packageObj.author -> ' + packageObj.author + 'packageObj.version -> ' + packageObj.version)
+                } catch (e) {
+                    // 错误处理
+                    console.log('...About.vue...Error -> ', e);
+                    // 弹出错误消息
+                    ElMessage({
+                        showClose: true,
+                        message: e.toString(),
+                        duration: 2000,
+                        type: 'error'
+                    });
+                }
             },
             changeIsTrue() {
                 this.isTrue = !this.isTrue;
