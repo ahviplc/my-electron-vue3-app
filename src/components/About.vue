@@ -64,8 +64,8 @@
                     // console.log(packageObj)
                     console.log('packageObj.author -> ', packageObj.author, 'packageObj.version -> ', packageObj.version)
                     // packageObj.author ->  LC packageObj.version ->  0.1.0
-                    // alert('...读取成功... Data -> ' + 'packageObj.author -> ' + packageObj.author + 'packageObj.version -> ' + packageObj.version)
-                    ElMessage('...读取成功... Data -> ' + 'packageObj.author -> ' + packageObj.author + 'packageObj.version -> ' + packageObj.version)
+                    // alert('...读取成功... Data -> ' + ' packageObj.author -> ' + packageObj.author + ' packageObj.version -> ' + packageObj.version)
+                    ElMessage('...读取成功... Data -> ' + ' packageObj.author -> ' + packageObj.author + ' packageObj.version -> ' + packageObj.version)
                 } catch (e) {
                     // 错误处理
                     console.log('...About.vue...Error -> ', e);
