@@ -20,7 +20,7 @@
 
             // date改变触发事件
             const change = (obj) => {
-                console.log('百度日历组件 对象 obj -> ', obj)
+                console.log('...calendar.vue...百度日历组件 对象 obj -> ', obj)
             }
 
             // const date = ref("2021-1-27") // 设置日期，若不设置，则默认为今天

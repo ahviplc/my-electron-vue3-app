@@ -1,4 +1,5 @@
-// 从element-plus导出某写组件
+// 封装element-plus工具类
+// 从element-plus导出某些组件
 
 // Message 消息提示
 import {ElMessage} from 'element-plus'
@@ -11,5 +12,5 @@ const ep = {
     ElMessage
 }
 
-// 默认导出
+// 默认导出 ep
 export default ep
