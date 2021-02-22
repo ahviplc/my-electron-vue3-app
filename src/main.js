@@ -18,6 +18,10 @@ import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
 app.use(ElementPlus)
 
+// 将再次封装的ElementPlus组件使用工具 绑定全局属性
+import ep from './utils/element-plus'
+app.config.globalProperties.$ep = ep
+
 // 导入自己diy的组件
 import diyComponent from './components/diy-component'
 app.use(diyComponent)

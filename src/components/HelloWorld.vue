@@ -30,6 +30,7 @@
         <h3>Diy !~{{author}}</h3>
         <ul>
             <li>
+                <p>【from HelloWorld.vue 子组件 -> 姓名：{{ myName }}】</p>
                 <button @click="oneClick">oneClick</button>
             </li>
         </ul>
@@ -40,7 +41,8 @@
     export default {
         name: 'HelloWorld',
         props: {
-            msg: String
+            msg: String,
+            myName: String
         },
         data() {
             return {
@@ -62,8 +64,15 @@
         },
         methods: {
             oneClick() {
-                alert('点我干嘛?')
-                console.log('点我干嘛?')
+                const msgTemp = '...HelloWorld.vue...点我干嘛?点我会触发父组件中的自定义事件,触发在父组件中的方法,从而改变父组件Home.vue中myNameFather字段的值,也就是会改变姓名myName'
+                // 点击子组件按钮oneClick时 使用this.$emit()触发父组件中的自定义事件,触发在父组件中的方法,从而改变父组件Home.vue中myNameFather字段的值,也就是会改变姓名myName
+                // alert(msgTemp)
+                this.$ep.ElMessage(msgTemp)
+                console.log(msgTemp)
+                // 使用$emit在子组件中调用父组件的方法并传递数据
+                // 调用父组件中的自定义事件,触发其方法
+                // chageName为父组件Home.vue中自定义的触发方法 使用this.$emit('changeName','LC')接收自定义触发事件 触发此方法
+                this.$emit('changeName', '改变之后,你就是LC了')
             }
         }
     }
