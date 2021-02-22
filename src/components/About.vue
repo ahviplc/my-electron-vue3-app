@@ -7,8 +7,14 @@
             {{say}}~{{name}}
         </div>
         <!--引入自己diy的组件 在需要的地方 按照如下形式 引入即可-->
+        <!--以下形式均可-->
+        <!-- <diyComponent></diyComponent> -->
+        <!-- <diy-Component></diy-Component> -->
+        <!-- <diy-component></diy-component> -->
+        <!-- <diy-component/> -->
+        <!-- <diyComponent/> -->
         <div>
-            <diyComponent></diyComponent>
+            <diyComponent/>
         </div>
     </div>
 </template>
@@ -48,6 +54,22 @@
         },
         mounted() {
             console.log('...mounted...')
+            // 直接 this.$axioe() 使用
+            this.$axios({
+                method: 'get',
+                url: 'http://httpbin.org/get',
+                // `headers` 是即将被发送的自定义请求头
+                headers: {
+                    'X-User-Token': 'lc' // headers
+                }
+            }).then((res) => {
+                console.log('...About.vue...mounted()...res -> ', res) // 这个本身就是对象了
+                console.log('...About.vue...mounted()...res.data -> ', res.data) // 这个本身就是对象了
+                // 直接 this.$ep.ElMessage() 使用
+                this.$ep.ElMessage(JSON.stringify(res.data))
+            }).catch((err) => {
+                console.log('...About.vue...mounted()...err... -> ', err)
+            })
         },
         methods: {
             README() {

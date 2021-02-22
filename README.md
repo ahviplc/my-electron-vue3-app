@@ -136,6 +136,10 @@ app.config.globalProperties.$axios = axios
 app.use(router).mount('#app')
 ```
 
+```markdown
+进行了axios的再次封装,新增了axios的拦截器的配置.
+```
+
 # 添加第三方组件
 ## vue-baidu-calendar
 ```markdown
@@ -200,6 +204,14 @@ https://element-plus.gitee.io/#/zh-CN
 
 element-plus/element-plus: 🎉 A Vue.js 3.0 UI Library made by Element team
 https://github.com/element-plus/element-plus
+```
+
+```markdown
+进行了element-plus的再次封装,绑定到了全局属性.
+灵活封装导出使用element-plus的各个组件
+然后再src/main.js绑定全局属性 ep
+使用方法
+在需要使用的地方直接  this.$ep.ElMessage('你好') 即可使用
 ```
 
 ## diy-component
